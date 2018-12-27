@@ -1,8 +1,15 @@
+'use strict';
 const gulp =  require('gulp');
+const pug = require('gulp-pug');
+const sass = require('gulp-sass');
+const sourcemaps = require('gulp-sourcemaps');
+const imgmin = require('gulp-imagemin');
 const concat = require('gulp-concat');
 const autoprefixer = require('gulp-autoprefixer');
 const cleanCSS = require('gulp-clean-css');
 const uglify = require('gulp-uglify');
+const del = require('del');
+const browserSync = require('browser-sync').create();
 
 // Gulp function for gulp task styles-libs
 function stylesLibs() {
@@ -23,21 +30,34 @@ function stylesLibs() {
 }
 
 // Gulp function for gulp task scriptLibs
-function scriptLibs(){
-  const scriptLibs = [
+function scriptsLibs(){
+  const scriptsLibs = [
     './node_modules/bootstrap/dist/js/bootstrap.js'
   ]
-  return gulp.src(scriptLibs)
+  return gulp.src(scriptsLibs)
+    .pipe(sourcemaps.init())
     .pipe(concat('libs.js'))
     .pipe(uglify({
         toplevel:true
     }))
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest('./build/js'));
+}
+
+// Gulp function for gulp task pug
+function pugTask(){
+  return gulp.src('./src/pug/pages/*.pug')
+    .pipe(pug({
+      pretty:true
+    }))
+    .pipe(gulp.dest('./build'));
 }
 
 // Gulp function for gulp task Custom styles
 function styles(){
   return gulp.src('./src/scss/**/*.scss')
+    .pipe(sourcemaps.init())
+    .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer({
       browsers: ['> 0.1%'],
       cascade: false
@@ -45,11 +65,13 @@ function styles(){
     .pipe(cleanCSS({
       level: 2
     }))
-    .pipe(gulp.dest('./build/css'));
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('./build/css'))
+    .pipe(browserSync.stream());
 }
 
 // Gulp function for gulp task Customs script
-function script(){
+function scripts(){
   const jsPaths = [
     './src/js/main.js'
   ]
@@ -58,13 +80,20 @@ function script(){
     .pipe(uglify({
         toplevel:true
     }))
-    .pipe(gulp.dest('./build/js'));
+    .pipe(gulp.dest('./build/js'))
+    .pipe(browserSync.stream());
 }
 
 //Gulp Watch
 function watch(){
+  browserSync.init({
+    server: {
+        baseDir: "./"
+    }
+  });
   gulp.watch('./src/scss/**/*.scss', styles);
-  gulp.watch('./src/js/**/*.js', script);
+  gulp.watch('./src/js/**/*.js', scripts);
+
 }
 
 //Gulp Remove all in ./build
@@ -74,12 +103,14 @@ function clean(){
 
 //Gulp Tasks
 gulp.task('styles-libs', stylesLibs);
-gulp.task('script-libs', scriptLibs);
+gulp.task('scripts-libs', scriptsLibs);
 
+gulp.task('pug', pugTask);
 gulp.task('styles', styles);
-gulp.task('script', script);
+gulp.task('scripts', scripts);
 gulp.task('watch', watch);
 gulp.task('clean', clean);
 
-gulp.task('libs', gulp.parallel(stylesLibs, scriptLibs));
-gulp.task('build', gulp.series(clean, gulp.parallel(stylesLibs, scriptLibs)));
+gulp.task('libs', gulp.parallel(stylesLibs, scriptsLibs));
+gulp.task('build', gulp.series(clean, gulp.parallel(stylesLibs, scriptsLibs, styles, scripts)));
+gulp.task('dev', gulp.series('build','watch'));
