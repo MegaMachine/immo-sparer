@@ -3,12 +3,12 @@ const gulp =  require('gulp');
 const pug = require('gulp-pug');
 const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
-const imgmin = require('gulp-imagemin');
 const concat = require('gulp-concat');
 const autoprefixer = require('gulp-autoprefixer');
 const cleanCSS = require('gulp-clean-css');
 const uglify = require('gulp-uglify');
 const del = require('del');
+const plumber = require('gulp-plumber');
 const browserSync = require('browser-sync').create();
 
 // Gulp function for gulp task styles-libs
@@ -47,10 +47,12 @@ function scriptsLibs(){
 // Gulp function for gulp task pug
 function pugTask(){
   return gulp.src('./src/pug/pages/*.pug')
+    .pipe(plumber())
     .pipe(pug({
       pretty:true
     }))
-    .pipe(gulp.dest('./build'));
+    .pipe(gulp.dest('./build'))
+    .pipe(browserSync.stream());
 }
 
 // Gulp function for gulp task Custom styles
@@ -84,16 +86,27 @@ function scripts(){
     .pipe(browserSync.stream());
 }
 
+// Img,Fonts move to build
+function staticMove(){
+  const staticPaths = [
+    './src/img/**/*.*',
+    './src/fonts/**/*.*'
+  ];
+  return gulp.src(staticPaths)
+    .pipe(gulp.dest('./build/img'))
+}
+
 //Gulp Watch
 function watch(){
   browserSync.init({
     server: {
-        baseDir: "./"
+        baseDir: "./build"
     }
   });
   gulp.watch('./src/scss/**/*.scss', styles);
   gulp.watch('./src/js/**/*.js', scripts);
-
+  gulp.watch('./src/pug/**/*.pug', pugTask);
+  gulp.watch(['./src/img/**/*.*','./src/fonts/**/*.*'],staticMove);
 }
 
 //Gulp Remove all in ./build
@@ -108,9 +121,10 @@ gulp.task('scripts-libs', scriptsLibs);
 gulp.task('pug', pugTask);
 gulp.task('styles', styles);
 gulp.task('scripts', scripts);
+gulp.task('move',staticMove);
 gulp.task('watch', watch);
 gulp.task('clean', clean);
 
 gulp.task('libs', gulp.parallel(stylesLibs, scriptsLibs));
-gulp.task('build', gulp.series(clean, gulp.parallel(stylesLibs, scriptsLibs, styles, scripts)));
+gulp.task('build', gulp.series(clean, gulp.parallel(stylesLibs, scriptsLibs, styles, scripts, pugTask, staticMove)));
 gulp.task('dev', gulp.series('build','watch'));
