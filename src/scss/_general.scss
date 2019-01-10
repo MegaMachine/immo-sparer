@@ -1,3 +1,6 @@
+*{
+  box-sizing: border-box;
+}
 html{
   font-size: 16px;
 }
@@ -13,6 +16,9 @@ a{
     color:inherit;
   }
 }
+h1, h2, h3, h4, h5, h6{
+  margin: 0;
+}
 p {
   font-size: 14px;
   margin: 0;
@@ -21,6 +27,13 @@ ul{
   list-style: none;
   margin: 0;
   padding: 0;
+}
+input{
+  border: none;
+  outline: none;
+  &:active,&:hover,&:focus{
+    outline: none;
+  }
 }
 .social{
   img{
@@ -31,14 +44,15 @@ ul{
   }
 }
 .button {
-  padding: 20px 50px;
+  padding: 15px 55px;
   text-align: center;
-  display: block;
+  display: inline-block;
   span {
     font-size: 16px;
     font-family:$font-poppins-semibold;
     color:$color-white;
     line-height: 24px;
+    text-transform: uppercase;
   }
   &.blue {
     background: $color-blue1;
@@ -54,3 +68,25 @@ ul{
     background: transparent;
   }
 }
+
+// .preView{
+//   position: absolute;
+//   top:0;
+//   left: 0;
+//   right: 0;
+//   bottom: 0;
+//   animation:preViewAnim 3s ease-out;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   background: $color-white;
+//   img{
+//     width: 300px;
+//   }
+// }
+
+// @keyframes preViewAnim{
+//   0%{opacity: 1;}
+//   99%{opacity: 0;}
+//   100%{display: none;}
+// }

@@ -1,0 +1,71 @@
+.webinar-info{
+  background: url('../img/bg/header-bg.jpg') no-repeat right / cover;
+  padding-top: 80px;
+  .container{
+    display: flex;
+
+  }
+  h2{
+    @include text(30px, $color-white, $font-poppins-medium, 36px);
+    margin-bottom: 30px;
+  }
+  &__left{
+    padding: 115px 50px 50px 50px;
+    background: $color-dark-blue;
+    width: 43%;
+    p{
+      @include text(18px, $color-white, $font-poppins-regular, 24px);
+      margin-bottom: 30px;
+    }
+    &__icons{
+      margin-bottom: 95px;
+      .item{
+        display: inline-block;
+        margin-right: 20px;
+        &__img{
+          @include iconCircle(65px, 2px);
+          margin-bottom: 10px;
+        }
+        h3{
+          @include text(18px, $color-white, $font-poppins-regular, 24px);
+        }
+      }
+    }
+  }
+  &__right{
+    padding: 115px 50px 50px 50px;
+    background: url('../img/bg/bg-webinar-info.jpg') no-repeat right / cover;
+    width: 57%;
+    p{
+      @include text(16px, $color-white, $font-poppins-regular, 24px);
+      margin-bottom: 30px;
+    }
+    &__icons{
+      margin-bottom: 95px;
+      display: flex;
+      align-items: center;
+      .item{
+        display: flex;
+        align-items: center;
+        margin-right: 35px;
+        &__img{
+          display: inline-block;
+          margin-right: 20px;
+        }
+        h3{
+          display: inline-block;
+          @include text(16px, $color-blue1, $font-poppins-regular, 24px);
+        }
+      }
+    }
+    &__buttons{
+      .button{
+        padding: 15px 40px;
+        &:first-of-type{
+          margin-right: 30px;
+        }
+      }
+
+    }
+  }
+}
