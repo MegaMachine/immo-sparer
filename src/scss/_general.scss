@@ -1,0 +1,56 @@
+html{
+  font-size: 16px;
+}
+.row {
+  &:after,
+  &:before {
+    display: none;
+  }
+}
+a{
+  &:hover,&:focus,&:active{
+    text-decoration: none;
+    color:inherit;
+  }
+}
+p {
+  font-size: 14px;
+  margin: 0;
+}
+ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.social{
+  img{
+    width: 16px;
+    &.google{
+      width:24px;
+    }
+  }
+}
+.button {
+  padding: 20px 50px;
+  text-align: center;
+  display: block;
+  span {
+    font-size: 16px;
+    font-family:$font-poppins-semibold;
+    color:$color-white;
+    line-height: 24px;
+  }
+  &.blue {
+    background: $color-blue1;
+  }
+  &.red {
+    background: $color-red;
+    span {
+      font-size: 20px;
+    }
+  }
+  &.transparent {
+    border:2px solid $color-white;
+    background: transparent;
+  }
+}

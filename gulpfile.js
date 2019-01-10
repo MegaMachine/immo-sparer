@@ -88,13 +88,20 @@ function scripts(){
 }
 
 // Img,Fonts move to build
-function staticMove(){
+function staticMoveImg(){
   const staticPaths = [
-    './src/img/**/*.*',
+    './src/img/**/*.*'
+  ];
+  return gulp.src(staticPaths)
+    .pipe(gulp.dest('./build/img'));
+}
+
+function staticMoveFonts(){
+  const staticPaths = [
     './src/fonts/**/*.*'
   ];
   return gulp.src(staticPaths)
-    .pipe(gulp.dest('./build/img'))
+    .pipe(gulp.dest('./build/fonts'));
 }
 
 //Gulp Watch
@@ -107,7 +114,8 @@ function watch(){
   gulp.watch('./src/scss/**/*.scss', styles);
   gulp.watch('./src/js/**/*.js', scripts);
   gulp.watch('./src/pug/**/*.pug', pugTask);
-  gulp.watch(['./src/img/**/*.*','./src/fonts/**/*.*'],staticMove);
+  gulp.watch('./src/img/**/*.*',staticMoveImg);
+  gulp.watch('./src/fonts/**/*.*',staticMoveFonts);
 }
 
 //Gulp Remove all in ./build
@@ -122,10 +130,11 @@ gulp.task('scripts-libs', scriptsLibs);
 gulp.task('pug', pugTask);
 gulp.task('styles', styles);
 gulp.task('scripts', scripts);
-gulp.task('move',staticMove);
+gulp.task('move:img',staticMoveImg);
+gulp.task('move:fonts',staticMoveFonts);
 gulp.task('watch', watch);
 gulp.task('clean', clean);
 
 gulp.task('libs', gulp.parallel(stylesLibs, scriptsLibs));
-gulp.task('build', gulp.series(clean, gulp.parallel(stylesLibs, scriptsLibs, styles, scripts, pugTask, staticMove)));
+gulp.task('build', gulp.series(clean, gulp.parallel(stylesLibs, scriptsLibs, styles, scripts, pugTask, staticMoveImg, staticMoveFonts)));
 gulp.task('dev', gulp.series('build','watch'));

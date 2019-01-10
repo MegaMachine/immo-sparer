@@ -1,0 +1,9 @@
+@mixin text($size,$color){
+  font-family: $font-poppins-regular;
+  font-size: $size;
+  color:$color;
+  a,span{
+    color:$color-blue2;
+  }
+}
+

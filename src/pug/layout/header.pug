@@ -1,19 +1,9 @@
+include header/top
+include header/mid
+include header/bottom
+
 mixin header()
   header.header
-    .header__top
-      .container
-        .row
-          .col-12
-            .log-or-reg
-              p
-                |Please 
-                a(href="#") login 
-                |or 
-                a(href="#") register 
-                |to create a new listing
-            .social
-              a.social__link(href="#")
-              a.social__link(href="#")
-              a.social__link(href="#")
-    .header__mid
-    .header__bottom
+    +top
+    +mid
+    +bottom
