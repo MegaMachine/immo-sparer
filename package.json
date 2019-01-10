@@ -1,5 +1,5 @@
 {
-  "name": "startproject",
+  "name": "immo-sparer",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MegaMachine/StartProject.git"
+    "url": "git+https://github.com/MegaMachine/immo-sparer.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/MegaMachine/StartProject/issues"
+    "url": "https://github.com/MegaMachine/immo-sparer/issues"
   },
-  "homepage": "https://github.com/MegaMachine/StartProject#readme",
+  "homepage": "https://github.com/MegaMachine/immo-sparer#readme",
   "devDependencies": {
     "browser-sync": "^2.26.3",
     "del": "^3.0.0",
@@ -31,6 +31,7 @@
   },
   "dependencies": {
     "bootstrap": "^4.2.1",
+    "jquery": "^3.3.1",
     "normalize.css": "^8.0.1"
   }
 }
