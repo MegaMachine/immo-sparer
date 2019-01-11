@@ -47,6 +47,7 @@ input{
   padding: 15px 55px;
   text-align: center;
   display: inline-block;
+  border:none;
   span {
     font-size: 16px;
     font-family:$font-poppins-semibold;
@@ -66,6 +67,9 @@ input{
   &.transparent {
     border:2px solid $color-white;
     background: transparent;
+  }
+  &:active,&:hover,&:focus{
+    outline: none;
   }
 }
 .search-item{

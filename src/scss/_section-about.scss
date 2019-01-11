@@ -1,0 +1,22 @@
+.about{
+  padding: 70px 0px;
+  .item-about{
+    text-align: center;
+    &__img{
+      display: inline-block;
+      margin-bottom: 30px;
+      border-radius: 50%;
+    }
+    p{
+      width: 80%;
+      margin: 0 auto;
+      display: block;
+      @include text(16px, $color-dark-blue, $font-poppins-regular, 24px);
+      span{
+        font-family: $font-poppins-semibold;
+        color:$color-dark-blue;
+        text-transform: uppercase;
+      }
+    }
+  }
+}
