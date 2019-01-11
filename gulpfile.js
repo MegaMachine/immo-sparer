@@ -16,6 +16,7 @@ function stylesLibs() {
   var cssPaths = [
     './node_modules/bootstrap/dist/css/bootstrap.css',
     './node_modules/normalize.css/normalize.css',
+    './node_modules/simplebar/dist/simplebar.css'
   ]
   return gulp.src(cssPaths)
     .pipe(concat('libs.css'))
@@ -33,8 +34,9 @@ function stylesLibs() {
 function scriptsLibs(){
   const scriptsLibs = [
     './node_modules/jquery/dist/jquery.js',
-    './node_modules/bootstrap/dist/js/bootstrap.js'
-  ]
+    './node_modules/bootstrap/dist/js/bootstrap.js',
+    './node_modules/simplebar/dist/simplebar.js'
+  ];
   return gulp.src(scriptsLibs)
     .pipe(sourcemaps.init())
     .pipe(concat('libs.js'))
@@ -76,13 +78,16 @@ function styles(){
 // Gulp function for gulp task Customs script
 function scripts(){
   const jsPaths = [
-    './src/js/main.js'
+    './src/js/main.js',
+    './src/js/map.js'
   ]
   return gulp.src(jsPaths)
+    .pipe(sourcemaps.init())
     .pipe(concat('custom.js'))
     .pipe(uglify({
         toplevel:true
     }))
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest('./build/js'))
     .pipe(browserSync.stream());
 }

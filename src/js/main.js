@@ -1,42 +1,75 @@
-$(function(){
-  headerHeight();
-  titleAlign()
-  $(window).scroll(function(){
-    
-  });
+$(function() {
 
-  $(window).resize(function(){
+  setTimeout(function() {
     headerHeight();
+    titleAlign();
+    mapWidth();
+    loadScriptMap();
+  }, 111);
+
+  $(window).scroll(function() {});
+
+  $(window).resize(function() {
+    headerHeight();
+    titleAlign();
+    mapWidth();
   });
 
+  // new SimpleBar($('.seminare__search__list ul'));
 });
 
 //webinar height
-function headerHeight(){
-  setTimeout(function(){
-    var height = $('header.header').outerHeight();
-    console.log(height);
-    $('section.webinar-info').css('min-height','calc(100vh - '+ height +'px)');
-  },111);
+function headerHeight() {
+  var height = $("header.header").outerHeight();
+  $("section.webinar-info").css("min-height", "calc(100vh - " + height + "px)");
 }
 
 //webinar title align
-function titleAlign(){
-  setTimeout(function(){
-    var items = $('.webinar-info h2');
-    var max;
-    var min;
-    var height;
-    if($(items[0]).outerHeight() <= $(items[1]).outerHeight()){
-      min = $(items[0]).outerHeight();
-      max = $(items[1]).outerHeight();
-      height = max - min;
-      $(items[0]).css('marginBottom',parseFloat($(items[0]).css('marginBottom'))+ height + 'px');
-    } else {
-      min = $(items[1]).outerHeight();
-      max = $(items[0]).outerHeight();
-      height = max - min;
-      $(items[1]).css('marginBottom',parseFloat($(items[1]).css('marginBottom')) + height + 'px');
-    }
-  },111);
+function titleAlign() {
+  var items = $(".webinar-info h2");
+  var defaultMargin = items.css('marginBottom');
+  var max;
+  var min;
+  var height;
+  if ($(items[0]).outerHeight() <= $(items[1]).outerHeight()) {
+    $(items[0]).css(
+      "marginBottom",
+      defaultMargin
+    );
+    min = $(items[0]).outerHeight();
+    max = $(items[1]).outerHeight();
+    height = max - min;
+    $(items[0]).css(
+      "marginBottom",
+      parseFloat($(items[0]).css("marginBottom")) + height + "px"
+    );
+  } else {
+    $(items[1]).css(
+      "marginBottom",
+      defaultMargin
+    );
+    min = $(items[1]).outerHeight();
+    max = $(items[0]).outerHeight();
+    height = max - min;
+    $(items[1]).css(
+      "marginBottom",
+      parseFloat($(items[1]).css("marginBottom")) + height + "px"
+    );
+  }
 }
+
+//map size
+function mapWidth() {
+  var windowWidth = $("body").outerWidth();
+  var mapOffset = $(".seminare-and-map .map").offset().left;
+  var seminarWIdth = $('.seminare-and-map .seminare').outerWidth();
+  var containerPadding = parseFloat($('.seminare-and-map .container').css('paddingLeft'));
+  var containerHeight = parseFloat($('.seminare-and-map .container').outerHeight());
+  $(".seminare-and-map .map").css({
+    "width": windowWidth - mapOffset + "px",
+    'left': seminarWIdth + containerPadding + 'px',
+    'height': containerHeight + 'px'
+  });
+  console.log(containerPadding);
+}
+

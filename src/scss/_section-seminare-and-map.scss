@@ -1,0 +1,78 @@
+.seminare-and-map{
+  background-color: $color-blue1;
+  .container{
+    position: relative;
+  }
+  .seminare{
+    width: 43%;
+    display: inline-block;
+    padding: 70px 90px 70px 0px;
+    h2{
+      @include text(30px,$color-white,$font-poppins-medium,24px);
+      margin-bottom: 40px;
+    }
+    &__search{
+      width: 100%;
+      background-color: $color-dark-blue2;
+     
+      &__input{
+        input{
+
+        }
+      }
+      &__list{
+        
+        ul{
+          height: 60vh;
+          display: flex;
+          flex-direction: column;
+          overflow-y: auto;
+          li{
+            display: block;
+            padding: 15px 20px 10px;
+            border-bottom:1px solid $color-grey3;
+            h3{
+              @include text(16px,$color-blue1,$font-poppins-medium,21px);
+              margin-bottom: 5px;
+            }
+            &>div{
+              display: flex;
+              align-items: center;
+              margin-bottom: 10px;
+              justify-content: space-between;
+              p{
+                @include text(13px,$color-grey2,$font-poppins-regular,16px);
+                width: 40%;
+              }
+              .button{
+                min-width: 50%;
+                padding:15px;
+                span{
+                  word-wrap: none;
+                  font-family: $font-poppins-semibold;
+                  text-transform: uppercase;
+                  font-size: 16px;
+                }
+              }
+            }
+            span{
+              @include text(14px,$color-white,$font-poppins-regular,23px);
+            }
+          }
+        }
+      }
+    }
+  } 
+  .map{
+    width: calc(100vw - 43%);
+    background: black;
+    // height: 490px;
+    display: inline-block;
+    position: absolute;
+    top:0;
+    #map{
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
