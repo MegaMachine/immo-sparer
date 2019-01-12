@@ -7,21 +7,14 @@
     width: 43%;
     display: inline-block;
     padding: 70px 90px 70px 0px;
-    h2{
-      @include text(30px,$color-white,$font-poppins-medium,24px);
+    .section-title{
       margin-bottom: 40px;
+      text-align: left;
     }
     &__search{
       width: 100%;
       background-color: $color-dark-blue2;
-     
-      &__input{
-        input{
-
-        }
-      }
       &__list{
-        
         ul{
           height: 60vh;
           display: flex;
@@ -30,7 +23,7 @@
           li{
             display: block;
             padding: 15px 20px 10px;
-            border-bottom:1px solid $color-grey3;
+            border-bottom:1px solid $color-dark-blue-border;
             h3{
               @include text(16px,$color-blue1,$font-poppins-medium,21px);
               margin-bottom: 5px;

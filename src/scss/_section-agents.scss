@@ -1,0 +1,57 @@
+.agents{
+  background: $color-blue1;
+  padding: 75px 85px 90px;
+
+  .section-title{
+    margin-bottom: 35px;
+  }
+  &__item{
+  
+    display: flex;
+    &__img{
+      img{
+        width: 260px;
+        height: 260px;
+      }
+    }
+    &__text{
+      padding: 5px 25px 25px 25px;
+      h3{
+        @include text(20px, $color-white,$font-poppins-semibold,24px);
+        margin-bottom: 15px;
+      }
+      p{
+        @include text(16px, $color-white,$font-poppins-regular,22px);
+        margin-bottom: 25px;
+      }
+      .phone{
+        @include text(16px, $color-white,$font-poppins-semibold,20px);
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        &:before{
+          content:"";
+          margin-right: 10px;
+          width: 24px;
+          height: 24px;
+          display: block;
+          background: url('../img/icon/call-white.svg') no-repeat center / cover;
+        }
+      }
+      .social{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin-top: 25px;
+        &__link{
+
+          display: block;
+          margin-right: 20px;
+          img{
+            width: 22px;
+          }
+        }
+      }
+    }
+  }
+}

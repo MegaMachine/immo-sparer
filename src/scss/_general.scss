@@ -97,6 +97,12 @@ input{
 .simplebar-scrollbar:before{
   background: $color-blue1;
 }
+.section-title{
+  text-align: center;
+  h2{
+    @include text(30px, $color-white,$font-poppins-medium,36px);
+  }
+}
 // .preView{
 //   position: absolute;
 //   top:0;

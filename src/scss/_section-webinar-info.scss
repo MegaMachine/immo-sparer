@@ -6,9 +6,12 @@
     display: flex;
     min-height:60vh;
   }
-  h2{
-    @include text(30px, $color-white, $font-poppins-medium, 36px);
-    margin-bottom: 30px;
+  .section-title{
+    
+    text-align: left;
+    h2{
+      margin-bottom: 30px;
+    }
   }
   &__left{
     padding: 70px 50px 50px 50px;

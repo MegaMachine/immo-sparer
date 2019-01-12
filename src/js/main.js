@@ -4,7 +4,8 @@ $(function() {
     headerHeight();
     titleAlign();
     mapWidth();
-    loadScriptMap();
+    newPropertiesItemHeight();
+    objectFitSimulation();
   }, 111);
 
   $(window).scroll(function() {});
@@ -13,11 +14,19 @@ $(function() {
     headerHeight();
     titleAlign();
     mapWidth();
+    newPropertiesItemHeight();
   });
-
-  // new SimpleBar($('.seminare__search__list ul'));
 });
-
+//object-fit-simulation
+function objectFitSimulation(){
+  var simulator = $('.object-fit-simulation');
+  var img = simulator.find('img');
+  var imgSrc = img.attr('src');
+  img.css('display','none');
+  simulator.css({
+    'background':'url('+imgSrc+') no-repeat center / cover',
+  });
+}
 //webinar height
 function headerHeight() {
   var height = $("header.header").outerHeight();
@@ -70,6 +79,27 @@ function mapWidth() {
     'left': seminarWIdth + containerPadding + 'px',
     'height': containerHeight + 'px'
   });
-  console.log(containerPadding);
 }
 
+// new-properities new-properties__item__text height
+function newPropertiesItemHeight(){
+  var itemsLineHeight = parseFloat($('.new-properties__item__text p').css('lineHeight'));
+  var itemsTextTitle = $('.new-properties__item__text h3');
+  var itemsLocationHeight =  $('.new-properties__item__location div');
+  var maxHeight1 = 0;
+  var maxHeight2 = 0;
+  itemsLocationHeight.map(function(){
+    if($(this).outerHeight() >= maxHeight1){
+      maxHeight1 = $(this).outerHeight();
+    }
+  });
+  itemsTextTitle.map(function(){
+    if($(this).height() >= maxHeight2){
+      maxHeight2 = $(this).height();
+    }
+  });
+  itemsLocationHeight.css('height', maxHeight1 + 'px');
+  itemsTextTitle.css('height', maxHeight2 + 'px');
+  $('.new-properties__item__text p').css('height', itemsLineHeight * 2 + 'px');
+ 
+}

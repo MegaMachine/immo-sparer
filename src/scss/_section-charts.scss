@@ -1,12 +1,14 @@
 .charts{
   .section-title{
     margin-bottom: 20px;
+    text-align: left;
     h2{
       @include text(20px, $color-dark-blue2, $font-poppins-semibold, 24px);
     }
   }
   .section-text{
     margin-bottom: 30px;
+    
     p{
       @include text(16px, $color-grey1, $font-poppins-regular, 24px);
     }

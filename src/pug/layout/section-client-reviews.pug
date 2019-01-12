@@ -1,0 +1,19 @@
+mixin client-reviews()
+  section#client-reviews.client-reviews
+    .section-title
+      h2 What our clients say
+    .container
+      .row
+        each val in [1, 2, 3]
+          .col-md-4
+            .client-reviews__item
+              .client-reviews__item__quotes
+                img(src="../../img/icon/quotes.svg", alt="quotes")
+              .client-reviews__item__text
+                p Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae pariatur rem iste eaque veniam praesentium. Laborum, autem minima? Perspiciatis, ab.
+              .client-reviews__item__client
+                .client-reviews__item__client__img
+                  img(src="../../img/agents-photo1.jpeg", alt="photo")
+                .client-reviews__item__client__info
+                  h3 Gary Weinberg
+                  p Scriptwriter
