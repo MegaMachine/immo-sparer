@@ -4,11 +4,17 @@
 html{
   font-size: 16px;
 }
+body{
+  overflow: hidden;
+}
 .row {
   &:after,
   &:before {
     display: none;
   }
+}
+.static{
+  position: static;
 }
 a{
   &:hover,&:focus,&:active{
@@ -41,6 +47,11 @@ input{
     &.google{
       width:24px;
     }
+  }
+}
+button{
+  &:active,&:hover,&:focus{
+    outline: none;
   }
 }
 .button {

@@ -1,5 +1,7 @@
 $(function() {
 
+  mobileNavigation();
+
   setTimeout(function() {
     headerHeight();
     titleAlign();
@@ -15,8 +17,14 @@ $(function() {
     titleAlign();
     mapWidth();
     newPropertiesItemHeight();
+    mobileNavigation();
+  });
+  $('.menu-button').click(function(){
+    $(this).toggleClass('is-active');
+    $('.header__bottom__nav').toggleClass('active');
   });
 });
+
 //object-fit-simulation
 function objectFitSimulation(){
   var simulator = $('.object-fit-simulation');
@@ -101,5 +109,20 @@ function newPropertiesItemHeight(){
   itemsLocationHeight.css('height', maxHeight1 + 'px');
   itemsTextTitle.css('height', maxHeight2 + 'px');
   $('.new-properties__item__text p').css('height', itemsLineHeight * 2 + 'px');
- 
+}
+
+function mobileNavigation(){
+  var nav = $('.header__bottom__nav');
+  var phones = $('.header__mid__contacts__phones');
+  var ul = nav.children('ul');
+  var social = $('.header__top .social');
+  var logOrReg = $('.header__top .log-or-reg');
+  if(nav.css('position') === 'absolute'){
+    ul.wrap('<div class="container"></div>');
+    phones.appendTo(nav.children('.container'));
+    social.appendTo(nav.children('.container'));
+    logOrReg.appendTo(nav.children('.container'));
+  }else{
+    // location.reload();
+  }
 }

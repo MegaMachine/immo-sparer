@@ -16,7 +16,8 @@ function stylesLibs() {
   var cssPaths = [
     './node_modules/bootstrap/dist/css/bootstrap.css',
     './node_modules/normalize.css/normalize.css',
-    './node_modules/simplebar/dist/simplebar.css'
+    './node_modules/simplebar/dist/simplebar.css',
+    './node_modules/hamburgers/dist/hamburgers.css'
   ]
   return gulp.src(cssPaths)
     .pipe(concat('libs.css'))

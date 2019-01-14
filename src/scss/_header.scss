@@ -39,37 +39,79 @@
         color:$color-grey2;
         line-height: 22px;
       }
-      a{
-        font-size: 24px;
-        color:$color-dark-blue;
-        font-family: $font-poppins-semibold;
+      &__phones{
         display: flex;
-        align-items: center;
-        line-height: 30px;
-        &:before{
-          content:"";
-          margin-right: 10px;
-          width: 24px;
-          height: 24px;
-          display: block;
-          background: url('../img/icon/call-blue.svg') no-repeat center / cover;
+        a{
+          font-size: 24px;
+          color:$color-dark-blue;
+          font-family: $font-poppins-semibold;
+          display: flex;
+          align-items: center;
+          line-height: 30px;
+          margin-right: 20px;
+          &:last-of-type{
+            margin-right: 0px;
+          }
+          &:before{
+            content:"";
+            margin-right: 10px;
+            width: 24px;
+            height: 24px;
+            display: block;
+            background: url('../img/icon/call-blue.svg') no-repeat center / cover;
+          }
+          &.whatsapp{   
+            &:before{
+              width: 30px;
+              height: 30px;
+              background: url('../img/icon/section2-phone.svg') no-repeat center / cover;
+            }
+          }
         }
       }
     }
   }
   &__bottom{
     background: $color-blue1;
+    position: relative;
     .row{
       align-items: center;
     }
+    .menu-button{
+      display: block;
+      .hamburger-inner{
+        background-color: $color-white;
+        &:after,&:before{
+          background-color: inherit;
+        }
+      }
+    }
+
     &__nav{
+      @include mqmax($size-md){
+        width: 100vw;
+        position: absolute;
+        bottom:0px;
+        left: 0;
+        transform: translateY(100%) translateX(-100%);
+        margin-left: inherit;
+        margin-right: inherit;
+        transition: .8s;
+        background-color: $color-blue1;
+        &.active{
+          transform: translateY(100%) translateX(0%);
+        }
+      }
       ul{
         width: 100%;
         display: flex;
         justify-content: space-between;
+        @include mqmax($size-md){
+          padding: 15px;
+          display: block;
+          width: auto;
+        }
         li{
-          // width: 16%;
-         
           a{
             font-family: $font-poppins-semibold;
             font-size: 16px;
@@ -79,6 +121,20 @@
             align-items: center;
             padding: 30px 0px 25px 30px;
             border-bottom: 5px solid transparent;
+            @include mqmax($size-lg){
+              padding: 30px 0px 25px 0px;
+            }
+            @include mqmax($size-md){
+              padding: 0px;
+              margin-bottom: 10px;
+              border-bottom: none;
+              border-left: 3px solid transparent;
+              padding-left: 10px;
+              &.active,&:hover{
+                border-bottom: none;
+                border-left-color: $color-dark-blue;
+              }
+            }
             &.active,&:hover{
               border-color: $color-dark-blue;
             }
@@ -92,6 +148,11 @@
             }
           }
         }
+      }
+    }
+    &__search{
+      @include mqmax($size-md){
+        padding: 15px 0px;
       }
     }
   }

@@ -2,8 +2,11 @@ mixin bottom()
   .header__bottom
     .container
       .row
-        .col-md-8
-          nav.header__bottom__nav
+        .col-md-8.static
+          button.menu-button.d-lg-none.hamburger.hamburger--arrow(type="button")
+            span.hamburger-box
+              span.hamburger-inner
+          nav.header__bottom__nav.d-lg-block
             ul
               li
                 a.active(href="#") Home
