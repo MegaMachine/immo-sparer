@@ -7,6 +7,16 @@ mixin map()
         .seminare__search       
           .seminare__search__input.search-item
             input(type="text", name="map-search")
+          .seminare__search__filter
+            .seminare__search__filter__state
+              h3 State
+              select
+            .seminare__search__filter__city
+              h3 City
+              select
+            .seminare__search__filter__type
+              h3 Event Type
+              select
           .seminare__search__list
             ul(data-simplebar)
               li

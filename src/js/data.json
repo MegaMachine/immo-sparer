@@ -1,0 +1,111 @@
+{
+  "cities_dict": [ 
+    {
+      "id": 1059,
+      "name": "Hamburg"
+    },
+    {
+      "id": 817,
+      "name": "Arnstadt"
+    }
+  ],
+  "event_categories": [
+    {
+      "id": 1,
+      "name": "Online"
+    }
+  ],
+  "events_dict": [
+    {
+      "city_id": [
+        1059,
+        "Hamburg"
+      ],
+      "country_id": [
+        57,
+        "Germany"
+      ],
+      "date_begin": "2019-01-11 15:42:07",
+      "date_end": "2019-01-12 15:42:07",
+      "description": "<p><br></p>",
+      "event_type_id": false,
+      "have_time": true,
+      "id": 5,
+      "latitude": 53.5645323,
+      "longitude": 9.9856699,
+      "name": "Event (copy)",
+      "state_id": [
+        743,
+        "Hamburg"
+      ],
+      "street": false,
+      "street2": false,
+      "zip": "20146"
+    },
+    {
+      "city_id": [
+        1059,
+        "Hamburg"
+      ],
+      "country_id": false,
+      "date_begin": "2019-01-11 18:15:54",
+      "date_end": "2019-01-19 18:15:54",
+      "description": false,
+      "event_type_id": [
+        1,
+        "Online"
+      ],
+      "have_time": true,
+      "id": 4,
+      "latitude": 53.5645323,
+      "longitude": 9.9856699,
+      "name": "Event",
+      "state_id": [
+        743,
+        "Hamburg"
+      ],
+      "street": "Von-Melle-Park, 3",
+      "street2": false,
+      "zip": "20146"
+    },
+    {
+      "city_id": [
+        817,
+        "Arnstadt"
+      ],
+      "country_id": [
+        57,
+        "Germany"
+      ],
+      "date_begin": false,
+      "date_end": false,
+      "description": "<p><br></p>",
+      "event_type_id": [
+        1,
+        "Online"
+      ],
+      "have_time": false,
+      "id": 7,
+      "latitude": 50.84048,
+      "longitude": 10.95198,
+      "name": "Event",
+      "state_id": [
+        742,
+        "Thuringia"
+      ],
+      "street": false,
+      "street2": false,
+      "zip": false
+    }
+  ],
+  "state_dict": [
+    {
+      "id": 743,
+      "name": "Hamburg"
+    },
+    {
+      "id": 742,
+      "name": "Thuringia"
+    }
+  ]
+}

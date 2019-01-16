@@ -14,9 +14,31 @@
     &__search{
       width: 100%;
       background-color: $color-dark-blue2;
+      &__filter{
+        padding: 15px;
+        &>div{
+          margin-bottom: 20px;
+        }
+        h3{
+          @include text(20px,$color-blue1,$font-poppins-medium,21px);
+          margin-bottom: 5px;
+        }
+        select{
+          width: 100% !important;
+        }
+        .select2-container,.select2-selection{
+          outline: none;
+        }
+        .select2-container{
+          width: 100%;
+          .select2-selection{
+
+          }
+        }
+      } 
       &__list{
         ul{
-          height: 60vh;
+          height: 45vh;
           display: flex;
           flex-direction: column;
           overflow-y: auto;

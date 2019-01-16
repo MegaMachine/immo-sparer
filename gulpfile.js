@@ -17,7 +17,8 @@ function stylesLibs() {
     './node_modules/bootstrap/dist/css/bootstrap.css',
     './node_modules/normalize.css/normalize.css',
     './node_modules/simplebar/dist/simplebar.css',
-    './node_modules/hamburgers/dist/hamburgers.css'
+    './node_modules/hamburgers/dist/hamburgers.css',
+    './node_modules/select2/dist/css/select2.css'
   ]
   return gulp.src(cssPaths)
     .pipe(concat('libs.css'))
@@ -36,7 +37,9 @@ function scriptsLibs(){
   const scriptsLibs = [
     './node_modules/jquery/dist/jquery.js',
     './node_modules/bootstrap/dist/js/bootstrap.js',
-    './node_modules/simplebar/dist/simplebar.js'
+    './node_modules/simplebar/dist/simplebar.js',
+    './node_modules/lodash/lodash.js',
+    './node_modules/select2/dist/js/select2.js'
   ];
   return gulp.src(scriptsLibs)
     .pipe(sourcemaps.init())
@@ -110,6 +113,14 @@ function staticMoveFonts(){
     .pipe(gulp.dest('./build/fonts'));
 }
 
+function staticMoveJson(){
+  const staticPaths = [
+    './src/js/**/*.json'
+  ];
+  return gulp.src(staticPaths)
+    .pipe(gulp.dest('./build/json'));
+}
+
 //Gulp Watch
 function watch(){
   browserSync.init({
@@ -126,7 +137,7 @@ function watch(){
 
 //Gulp Remove all in ./build
 function clean(){
-  return del(['build/*'])
+  return del(['build/*']);
 }
 
 //Gulp Tasks
@@ -142,5 +153,5 @@ gulp.task('watch', watch);
 gulp.task('clean', clean);
 
 gulp.task('libs', gulp.parallel(stylesLibs, scriptsLibs));
-gulp.task('build', gulp.series(clean, gulp.parallel(stylesLibs, scriptsLibs, styles, scripts, pugTask, staticMoveImg, staticMoveFonts)));
+gulp.task('build', gulp.series(clean, gulp.parallel(stylesLibs, scriptsLibs, styles, scripts, pugTask, staticMoveImg, staticMoveFonts,staticMoveJson)));
 gulp.task('dev', gulp.series('build','watch'));
