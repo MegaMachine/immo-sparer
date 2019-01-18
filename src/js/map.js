@@ -9,6 +9,20 @@ var map;
 var markers = [];
 var startPosition;
 var objects;
+var searchResult;
+var checkState;
+// var simpleBarUl = new SimpleBar(document.getElementById('search-list'));
+
+//Значення для select
+var filterValues = {
+  states:[],
+  cities:[],
+  eventsType:[]
+};
+
+var selectState;
+var selectCity;
+var selectType;
 
 $(document).ready(function(){
   startPosition = {
@@ -17,36 +31,89 @@ $(document).ready(function(){
     type : $('#template_type').val() || 'terrain'
   };
 
-  //Create Selects
-  var selectState = $('.seminare__search__filter__state select');
-  var selectCity = $('.seminare__search__filter__city select');
-  var selectType = $('.seminare__search__filter__type select');
-  selectState.select2();
-  selectCity.select2();
-  selectType.select2();
-  objects.state_dict.map(function(item){
-    var option = new Option(item.name,item.id)
-    selectState.append(option);
+  //Get selects
+  selectState = $('.seminare__search__filter__state select');
+  selectCity = $('.seminare__search__filter__city select');
+  selectType = $('.seminare__search__filter__type select');
+
+  selectState.select2({
+    placeholder: "Select a state",
+    allowClear: true
   });
-  objects.cities_dict.map(function(item){
-    var option = new Option(item.name,item.id)
-    selectCity.append(option);
+  selectCity.select2({
+    placeholder: "Select a city",
+    allowClear: true
   });
-  objects.event_categories.map(function(item){
-    var option = new Option(item.name,item.id)
-    selectType.append(option);
+  selectType.select2({
+    placeholder: "Select a event type",
+    allowClear: true
+  });
+  
+  //Filter
+  $('.select2-selection__clear').click(function(){
+    filterSort(selectState.val(),selectCity.val(),selectType.val());
   });
 
-  //Filter
-  // var obj = {
-  //   id_season: this.filterResult.inputs.season ? Number(this.filterResult.inputs.season) : null,
-  //   id_contingent : this.filterResult.inputs.contingent ? Number(this.filterResult.inputs.contingent) : null,
-  //   material : this.filterResult.selects.material ? { id_material : Number(this.filterResult.selects.material.value) } : null ,
-  // };
-  // var findObj = _.pickBy(obj, _.identity);
-  // var searchResult = _.filter(objects., findObj);
-  // console.log(_.find(objects.event_dist,[1059]));
+  $('.seminare__search__filter select').change(function(){   
+    filterSort(selectState.val(),selectCity.val(),selectType.val());
+  });
+  
+  $('.seminare__search__filter__state select').change(function(){
+    if($(this).val()){
+      filterValues.cities = [];
+      filterValues.cities = _.filter(objects.cities_dict,{ state_id: Number($(this).val())});
+      selectCity.html('<option></option>');
+      filterValues.cities.map(function(item){
+        var option = new Option(item.name,item.id);
+        selectCity.append(option);
+      });
+    } else {
+      filterValues.cities = [];
+      filterValues.cities = objects.cities_dict;
+      selectCity.html('<option></option>');
+      filterValues.cities.map(function(item){
+        var option = new Option(item.name,item.id);
+        selectCity.append(option);
+      });
+    }
+    filterSort(selectState.val(),selectCity.val(),selectType.val());
+  });
+
+  $.when($.ajax({
+    type: "GET",
+    url:  url,
+    dataType: "json",
+    async: false, // Забрати коли будеш на бек-енд стукатись
+    success: function success(data) {
+      objects = data;
+      searchResult = data.events_dict;
+      console.log('good: ',objects);
+    },
+    error: function error(_error) {
+      console.log('error: ',_error);
+    }
+  })).done(function () {
+    loadScriptMap(); //Розкоментувати коли мапа включена
+    filterValues.states = objects.state_dict;
+    filterValues.cities = objects.cities_dict;
+    filterValues.eventsType = objects.event_categories;
+    
+    filterValues.states.map(function(item){
+      var option = new Option(item.name,item.id);
+      selectState.append(option);
+    });
+    filterValues.cities.map(function(item){
+      var option = new Option(item.name,item.id);
+      selectCity.append(option);
+    });
+    filterValues.eventsType.map(function(item){
+      var option = new Option(item.name,item.id);
+      selectType.append(option);
+    });
+    buildSearchList();
+  });
 });
+
 
 function loadScriptMap() {
   var script = document.createElement('script');
@@ -57,6 +124,34 @@ function loadScriptMap() {
   var firstScriptTag = document.getElementsByTagName('script')[0];
   firstScriptTag.parentNode.insertBefore(script, firstScriptTag);
   document.body.appendChild(script);
+}
+
+function filterSort(state,city,event_type){
+  deleteMarkers(); //Розкоментувати коли мапа включена
+  var obj = {
+    state_id: state ? [Number(state)] : null,
+    city_id: city ? [Number(city)] : null,
+    event_type_id: event_type ? [Number(event_type)] : null ,
+  };
+  
+  var findObj = _.pickBy(obj, _.identity);
+  searchResult = _.filter(objects.events_dict, findObj);
+  buildSearchList();
+  createMarkersGroup(searchResult); //Розкоментувати коли мапа включена
+  showMarkers(); //Розкоментувати коли мапа включена
+}
+
+function buildSearchList(){
+  var ul = $('.seminare__search__list ul');
+  var li;
+  ul.html('');
+  searchResult.map(function(item){
+    li = document.createElement('li');
+    $(li).html('<h3>'+item.name+'</h3><div><p>' + item.street + ' ' + item.zip + ' ' + item.city_id[1] + '</p><a class="button blue" href="event/' + item.id + '"><span>Platz reservieren</span></a></div><span>Am ' + String(item.date_begin).substr(0, 9) + ' von ' + String(item.date_begin).substr(11,item.date_begin.length-3) + ' bis ' + String(item.date_end).substr(11,item.date_begin.length-3) + ' Uhr</span>');
+    $(li).appendTo(ul);
+  });
+  
+  // simpleBarUl.getContentElement();
 }
 
 function initMap() {
@@ -82,6 +177,15 @@ function addMarker(location) {
   markers.push(marker);
 }
 
+function createMarkersGroup(items){
+  items.map(function(item){
+    addMarker({
+      lat: item.latitude, 
+      lng: item.longitude
+    });
+  }); 
+}
+
 function setMapOnAll(map) {
   for (var i = 0; i < markers.length; i++) {
     markers[i].setMap(map);
@@ -101,26 +205,5 @@ function deleteMarkers() {
   markers = [];
 }
 
-// function initMap() {
-//   var uluru = {lat: -25.344, lng: 131.036};
-//   var map = new google.maps.Map(document.getElementById('map'), {zoom: 4, center: uluru});
-//   var marker = new google.maps.Marker({position: uluru, map: map});
-// }
-
-$.when($.ajax({
-  type: "GET",
-  url:  url,
-  dataType: "json",
-  async: false, // Забрати коли будеш на бек-енд стукатись
-  success: function success(data) {
-    objects = data;
-    console.log('good: ',objects);
-  },
-  error: function error(_error) {
-    console.log('error: ',_error);
-  }
-})).done(function () {
-  // console.log(objects);
-});
 
 

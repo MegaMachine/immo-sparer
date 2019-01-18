@@ -2,11 +2,13 @@
   "cities_dict": [ 
     {
       "id": 1059,
-      "name": "Hamburg"
+      "name": "Hamburg",
+      "state_id": 743
     },
     {
       "id": 817,
-      "name": "Arnstadt"
+      "name": "Arnstadt",
+      "state_id": 742
     }
   ],
   "event_categories": [
