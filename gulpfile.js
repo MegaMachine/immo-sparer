@@ -19,7 +19,7 @@ function stylesLibs() {
     './node_modules/simplebar/dist/simplebar.css',
     './node_modules/hamburgers/dist/hamburgers.css',
     './node_modules/select2/dist/css/select2.css'
-  ]
+  ];
   return gulp.src(cssPaths)
     .pipe(concat('libs.css'))
     .pipe(autoprefixer({
@@ -36,6 +36,7 @@ function stylesLibs() {
 function scriptsLibs(){
   const scriptsLibs = [
     './node_modules/jquery/dist/jquery.js',
+    './src/js/popper.js',
     './node_modules/bootstrap/dist/js/bootstrap.js',
     './node_modules/simplebar/dist/simplebar.js',
     './node_modules/lodash/lodash.js',

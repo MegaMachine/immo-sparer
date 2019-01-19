@@ -35,6 +35,7 @@
     "jquery": "^3.3.1",
     "lodash": "^4.17.11",
     "normalize.css": "^8.0.1",
+    "popper.js": "^1.14.6",
     "select2": "^4.0.6-rc.1",
     "simplebar": "^3.1.1"
   }

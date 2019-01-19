@@ -162,10 +162,10 @@ function initMap() {
     center: haightAshbury,
     mapTypeId: startPosition.type
   });
-
-  map.addListener('click', function(event) {
-    addMarker(event.latLng);
-  });
+  createMarkersGroup(searchResult);
+  // map.addListener('click', function(event) {
+  //   addMarker(event.latLng);
+  // });
   // addMarker(haightAshbury);
 }
 

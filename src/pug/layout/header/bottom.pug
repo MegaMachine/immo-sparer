@@ -8,18 +8,25 @@ mixin bottom()
               span.hamburger-inner
           nav.header__bottom__nav.d-lg-block
             ul
-              li
+              li.navigation-link
                 a.active(href="#") Home
-              li
+              li.navigation-link
                 a(href="#") Idx
-              li
+              li.navigation-link
                 a(href="#") Pages
-              li
+              li.navigation-link
                 a(href="#") Projects
-              li
+              li.navigation-link
                 a(href="#") Blog
-              li
+              li.navigation-link
                 a(href="#") Properties
+              li.navigation-link.dropdown
+                button#dropdownMenuButton.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                  | Dropdown button
+                .dropdown-menu(aria-labelledby='dropdownMenuButton')
+                  a.dropdown-item(href='#') Action
+                  a.dropdown-item(href='#') Another action
+                  a.dropdown-item(href='#') Something else here
         .col-md-4
           .header__bottom__search.search-item
             input(type="text")
