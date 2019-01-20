@@ -88,6 +88,141 @@
     #map{
       height: 100%;
       width: 100%;
+      .gm-style{
+        &>div:first-of-type{
+          &>div:nth-of-type(3){
+            &>div:nth-of-type(1){
+              &>div:nth-of-type(4){
+                &>div{ //info widnow
+                  &>div:first-of-type{
+                    display: none !important;
+                   
+                  }
+                  button{
+                    display: none !important; 
+                  }
+                  .gm-style-iw{
+                    top: 95px !important;
+                    left: 75px !important;
+                    overflow: visible;
+                    &>div{
+                      overflow: visible !important;
+                      &>div{
+                        overflow: visible !important;
+                      }
+                    }
+                  }
+                }
+                &>div:nth-of-type(3){
+
+                  &>div:nth-of-type(3){
+                   
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .marker-info{
+      position: relative;
+      cursor: pointer;
+      .marker-info-title{
+        background-color: $color-black;
+        display: flex;
+        align-items: center;
+        span,h2{
+          display: inline-block;
+        }
+        span{
+          width: 20px;
+          height: 20px;
+          position: relative;
+          background-color: $color-blue1;
+          flex-shrink: 0;
+          &:before{
+            width: 50%;
+            height:50%;
+            content:"";
+            border:3px solid $color-white;
+            border-radius: 50%;
+            position: absolute;
+            top:50%;
+            left:50%;
+            transform: translateX(-50%) translateY(-50%);
+          }
+        }
+        h2{
+          width: 100%;
+          text-align: center;
+          padding: 0px 10px;
+          @include text(14px,$color-white,$font-poppins-semibold,14px);
+          text-transform: uppercase;
+        }
+      }
+      .marker-info-content{
+        padding: 10px;
+        display: none;
+        width: calc(100% - 20px);
+        // height: 40px;
+        background: $color-white;
+        position: absolute;
+        top:0px;
+        right: 0px;
+        transform: translateY(-100%);
+        .phone,.address{
+          padding-left: 32px;
+          position: relative;
+          @include text(14px,$color-black,$font-poppins-regular,18px);
+          margin-bottom: 10px;
+          display: inline-block;
+          &:after{
+            content:"";
+            display: block;
+            position: absolute;
+            top:0px;
+            left: 0px;
+            width: 16px;
+            height: 16px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+          }
+        }
+        .phone{
+          &:after{
+            background-image: url('../img/icon/call-blue.svg');
+          }
+        }
+        .address{
+          span{
+            display: inline-block;
+            color:inherit;
+          }
+          &:after{
+            background-image: url('../img/icon/marker2.svg');
+            height: 20px;
+          }
+        }
+      }
+      &.active{
+        .marker-info-title{
+          min-width: 250px;
+          span{
+            width: 40px;
+            height: 40px;
+           
+          }
+          h2{
+            font-size: 28px;
+          }
+        }
+        .marker-info-content{
+          display: block;
+          width: calc(100% - 40px);
+        }
+      }
     }
   }
 }
