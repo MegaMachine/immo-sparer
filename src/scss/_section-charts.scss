@@ -19,12 +19,14 @@
     }
   }
   &__block{
+    display: flex;
     &__item{
-
+      width: 50%;
     }
   }
   &__buttons{
     display: flex;
     justify-content: space-between;
   }
+  
 }

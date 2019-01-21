@@ -208,8 +208,12 @@
             <p>Das Genussrechtskapital wurde überwiegend in Immobilien investiert, die entweder vermietet oder verkauft wurden. Die Erlöse daraus kamen den Anlegern in Form einer jährlichen Gewinnausschüttung in Höhe von sieben Prozent zu Gute. </p>
           </div>
           <div class="charts__block">
-            <div class="charts__block__item"></div>
-            <div class="charts__block__item"></div>
+            <div class="charts__block__item">
+              <canvas id="myChartOne" width="400" height="400"></canvas>
+            </div>
+            <div class="charts__block__item">
+              <canvas id="myChartTwo" width="400" height="400"></canvas>
+            </div>
           </div>
           <div class="charts__buttons">
             <button class="button red"><span>5%</span></button>
@@ -453,6 +457,8 @@
       <div class="footer__bottom"></div>
     </footer>
     <script src="js/libs.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
     <script src="js/custom.js"></script>
   </body>
 </html>

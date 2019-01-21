@@ -40,7 +40,7 @@ function scriptsLibs(){
     './node_modules/bootstrap/dist/js/bootstrap.js',
     './node_modules/simplebar/dist/simplebar.js',
     './node_modules/lodash/lodash.js',
-    './node_modules/select2/dist/js/select2.js'
+    './node_modules/select2/dist/js/select2.js',
   ];
   return gulp.src(scriptsLibs)
     .pipe(sourcemaps.init())
@@ -84,7 +84,8 @@ function styles(){
 function scripts(){
   const jsPaths = [
     './src/js/main.js',
-    './src/js/map.js'
+    './src/js/map.js',
+    './src/js/charts.js'
   ]
   return gulp.src(jsPaths)
     .pipe(sourcemaps.init())
