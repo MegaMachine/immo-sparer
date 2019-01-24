@@ -1,7 +1,7 @@
 $(function() {
 
   mobileNavigation();
-
+  headerCloneForMobile();
   setTimeout(function() {
     headerHeight();
     titleAlign();
@@ -21,7 +21,7 @@ $(function() {
   });
   $('.menu-button').click(function(){
     $(this).toggleClass('is-active');
-    $('.header__bottom__nav').toggleClass('active');
+    $('.header__bottom__nav__mobile').toggleClass('active');
   });
 });
 
@@ -125,4 +125,23 @@ function mobileNavigation(){
   }else{
     // location.reload();
   }
+}
+
+function headerCloneForMobile(){
+  var links =  $('.header__bottom__nav ul li a');
+  // $('.header__bottom__nav ul a').clone().appendTo('.header__bottom__nav__mobile ul');
+  
+  // header__top log-or-reg
+    //header__top social
+    //header__mid__contacts__phones a
+  for (var index = 0; index < links.length; index++) {
+    var li = document.createElement('li');
+    var cloneLink =  $(links[index]).clone();
+    $(cloneLink).removeClass('dropdown-item');
+    $(cloneLink).appendTo(li);
+    $(li).appendTo('.header__bottom__nav__mobile ul');   
+  }
+  // $('.header__top div.social').clone().appendTo('.header__bottom__nav__mobile');
+  $('.header__mid__contacts__phones').clone().appendTo('.header__bottom__nav__mobile');
+  $('.header__top .log-or-reg').clone().appendTo('.header__bottom__nav__mobile');
 }

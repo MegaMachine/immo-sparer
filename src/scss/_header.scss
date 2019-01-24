@@ -22,9 +22,16 @@
   }
   &__mid{
     padding: 20px 0px;
+    @include mqmax($size-md){
+      padding: 10px 0px;
+    }
     &__logo{
       display: block;
       width: 109px;
+      @include mqmax($size-md){
+        margin: 0 auto;
+        width: 85px;
+      }
       img{
         width:100%;
       }
@@ -88,7 +95,8 @@
     }
 
     &__nav{
-      @include mqmax($size-md){
+      &__mobile{ //@include mqmax($size-md)
+        padding: 15px;
         width: 100vw;
         position: absolute;
         bottom:0px;
@@ -101,15 +109,76 @@
         &.active{
           transform: translateY(100%) translateX(0%);
         }
+        ul{
+          margin-bottom: 15px;
+          display: block;
+          width: auto;
+          a{
+            border-radius: 0;
+            font-family: $font-poppins-semibold;
+            font-size: 16px;
+            text-transform: uppercase;
+            color:$color-white;
+            display: flex;
+            align-items: center;
+            line-height: 22px;
+            padding: 0px;
+            margin-bottom: 10px;
+            border-left: 3px solid transparent;
+            padding-left: 10px;
+            &.active,&:hover{
+              border-bottom: none;
+              border-left-color: $color-dark-blue;
+            }
+          }
+        }
+        .log-or-reg{
+          p{
+            @include text(14px,$color-black,$font-poppins-regular,18px);
+            a{
+              color:$color-white;
+            }
+          }
+        }
+        .header__mid__contacts__phones{
+          display: flex;
+          flex-direction: column;
+          a{
+            font-size: 24px;
+            color:$color-dark-blue;
+            font-family: $font-poppins-semibold;
+            display: flex;
+            align-items: center;
+            line-height: 30px;
+            margin-right: 20px;
+            margin-bottom: 15px;
+            &:last-of-type{
+              margin-right: 0px;
+            }
+            &:before{
+              content:"";
+              margin-right: 10px;
+              width: 24px;
+              height: 24px;
+              display: block;
+              background: url('../img/icon/call-white.svg') no-repeat center / cover;
+            }
+            &.whatsapp{   
+              &:before{
+                background: url('../img/icon/section2-phone-white.svg') no-repeat center / cover;
+              }
+            }
+          }
+        }
       }
       ul{
         width: 100%;
         display: flex;
         justify-content: space-between;
         @include mqmax($size-md){
-          padding: 15px;
-          display: block;
-          width: auto;
+          // padding: 15px;
+          // display: block;
+          // width: auto;
         }
         .navigation-link{
           &.dropdown{
