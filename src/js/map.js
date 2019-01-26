@@ -30,6 +30,20 @@ $(document).ready(function(){
     log : $('#longitude').val() || 9.4721966,
     type : $('#template_type').val() || 'terrain'
   };
+  $(window).resize(function(){
+    selectState.select2({
+      placeholder: "Select a state",
+      allowClear: true
+    });
+    selectCity.select2({
+      placeholder: "Select a city",
+      allowClear: true
+    });
+    selectType.select2({
+      placeholder: "Select a event type",
+      allowClear: true
+    });
+  });
 
   //Get selects
   selectState = $('.seminare__search__filter__state select');

@@ -5,10 +5,28 @@
   .container{
     display: flex;
     min-height:60vh;
+    @include mqmax($size-md){
+      min-height: auto;
+      flex-wrap: wrap;
+    }
+    &>div{
+      @include mqmax($size-lg){
+        padding: 35px;
+      }
+      @include mqmax($size-md){
+        width: 100%;
+      }
+      @include mqmax($size-sm){
+        padding: 15px;
+      }
+    }
   }
+
   .section-title{
-    
     text-align: left;
+    @include mqmax($size-sm){
+      text-align: center;
+    }
     h2{
       margin-bottom: 30px;
     }
@@ -24,12 +42,24 @@
       p{
         @include text(18px, $color-white, $font-poppins-regular, 24px);
         margin-bottom: 30px;
+        @include mqmax($size-sm){
+          margin-bottom: 15px;
+          font-size: 14px;
+          line-height: 20px;
+        }
       }
     }
     &__icons{
       .item{
         display: inline-block;
         margin-right: 20px;
+        @include mqmax($size-sm){
+          margin-right: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-bottom: 25px;
+        }
         &__img{
           @include iconCircle(65px, 2px);
           margin-bottom: 15px;
@@ -54,6 +84,11 @@
       p{
         @include text(18px, $color-white, $font-poppins-regular, 24px);
         margin-bottom: 30px;
+        @include mqmax($size-sm){
+          margin-bottom: 15px;
+          font-size: 14px;
+          line-height: 20px;
+        }
       }
     }
     &__icons{
@@ -75,10 +110,17 @@
       }
     }
     &__buttons{
+      display: flex;
+      justify-content: space-between;
+      @include mqmax($size-sm){
+        flex-wrap: wrap;
+      }
       .button{
-        padding: 15px 40px;
-        &:first-of-type{
-          margin-right: 30px;
+        padding: 15px;
+        width: 48%;
+        @include mqmax($size-sm){
+          width: 100%;
+          margin-bottom: 15px;
         }
       }
 

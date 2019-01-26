@@ -18,6 +18,7 @@ $(function() {
     mapWidth();
     newPropertiesItemHeight();
     mobileNavigation();
+    titleAlign();
   });
   $('.menu-button').click(function(){
     $(this).toggleClass('is-active');
@@ -84,9 +85,10 @@ function mapWidth() {
   var containerHeight = parseFloat($('.seminare-and-map .container').outerHeight());
   $(".seminare-and-map .map").css({
     "width": windowWidth - mapOffset + "px",
-    'left': seminarWIdth + containerPadding + 'px',
+    'left': seminarWIdth + containerPadding/2 + 'px',
     'height': containerHeight + 'px'
   });
+  console.log(mapOffset);
 }
 
 // new-properities new-properties__item__text height

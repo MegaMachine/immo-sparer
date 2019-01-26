@@ -112,6 +112,10 @@ button{
   text-align: center;
   h2{
     @include text(30px, $color-white,$font-poppins-medium,36px);
+    @include mqmax($size-sm){
+      font-size: 20px;
+      font-size: 26px;
+    }
   }
 }
 // .preView{
