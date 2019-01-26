@@ -1,6 +1,5 @@
 $(function() {
 
-  mobileNavigation();
   headerCloneForMobile();
   setTimeout(function() {
     headerHeight();
@@ -17,7 +16,6 @@ $(function() {
     titleAlign();
     mapWidth();
     newPropertiesItemHeight();
-    mobileNavigation();
     titleAlign();
   });
   $('.menu-button').click(function(){
@@ -83,9 +81,9 @@ function mapWidth() {
   var seminarWIdth = $('.seminare-and-map .seminare').outerWidth();
   var containerPadding = parseFloat($('.seminare-and-map .container').css('paddingLeft'));
   var containerHeight = parseFloat($('.seminare-and-map .container').outerHeight());
-  $(".seminare-and-map .map").css({
+  $(".seminare-and-map .map .map-wrap").css({
     "width": windowWidth - mapOffset + "px",
-    'left': seminarWIdth + containerPadding/2 + 'px',
+    // 'left': seminarWIdth + containerPadding + 'px',
     'height': containerHeight + 'px'
   });
   console.log(mapOffset);
@@ -111,22 +109,6 @@ function newPropertiesItemHeight(){
   itemsLocationHeight.css('height', maxHeight1 + 'px');
   itemsTextTitle.css('height', maxHeight2 + 'px');
   $('.new-properties__item__text p').css('height', itemsLineHeight * 2 + 'px');
-}
-
-function mobileNavigation(){
-  var nav = $('.header__bottom__nav');
-  var phones = $('.header__mid__contacts__phones');
-  var ul = nav.children('ul');
-  var social = $('.header__top .social');
-  var logOrReg = $('.header__top .log-or-reg');
-  if(nav.css('position') === 'absolute'){
-    ul.wrap('<div class="container"></div>');
-    phones.appendTo(nav.children('.container'));
-    social.appendTo(nav.children('.container'));
-    logOrReg.appendTo(nav.children('.container'));
-  }else{
-    // location.reload();
-  }
 }
 
 function headerCloneForMobile(){

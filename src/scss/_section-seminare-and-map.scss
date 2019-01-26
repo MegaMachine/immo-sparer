@@ -2,6 +2,7 @@
   background-color: $color-blue1;
   .container{
     position: relative;
+    display: flex;
   }
   .seminare{
     width: 43%;
@@ -18,6 +19,7 @@
         padding: 15px;
         &>div{
           margin-bottom: 20px;
+          position: relative;
         }
         h3{
           @include text(20px,$color-blue1,$font-poppins-medium,21px);
@@ -79,12 +81,17 @@
     }
   } 
   .map{
-    width: calc(100vw - 43%);
-    background: black;
-    // height: 490px;
-    display: inline-block;
-    position: absolute;
-    top:0;
+    position: relative;
+    // display: inline-block;
+    &-wrap{
+      // width: calc(100vw - 43%);
+      // background: black;
+      // // height: 490px;
+      // display: inline-block;
+      // position: absolute;
+      // top:0;
+    }
+
     #map{
       height: 100%;
       width: 100%;
