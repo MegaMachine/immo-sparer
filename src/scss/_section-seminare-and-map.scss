@@ -33,6 +33,9 @@
         width: 80%;
         margin: 0 auto;
       }
+      &__input{
+        display: none;
+      }
       &__filter{
         padding: 15px;
         &>div{
