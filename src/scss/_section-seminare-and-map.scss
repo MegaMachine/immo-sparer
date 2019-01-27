@@ -157,6 +157,7 @@
     .marker-info{
       position: relative;
       cursor: pointer;
+      margin-left: -4px;
       .marker-info-title{
         background-color: $color-black;
         display: flex;

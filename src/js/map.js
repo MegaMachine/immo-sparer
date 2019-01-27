@@ -122,7 +122,7 @@ $(document).ready(function(){
       console.log('error: ',_error);
     }
   })).done(function () {
-    // loadScriptMap(); //Розкоментувати коли мапа включена
+    loadScriptMap(); //Розкоментувати коли мапа включена
     filterValues.states = objects.state_dict;
     filterValues.cities = objects.cities_dict;
     filterValues.eventsType = objects.event_categories;
@@ -211,8 +211,11 @@ function initMap() {
 }
 
 function addMarker(location,contentString) {
+  var bounds = new google.maps.LatLngBounds();
+  var latLng = new google.maps.LatLng(location.lat,location.lng);
   var marker = new google.maps.Marker({
-    position: location,
+    center: latLng,
+    position: latLng,
     map: map
   });
   marker.setVisible(false);
@@ -220,6 +223,8 @@ function addMarker(location,contentString) {
     content: contentString
   });
   infowindow.open(map, marker);
+  // map.setCenter(latLng);
+  // map.setZoom(14);
   markers.push(marker);
 }
 
