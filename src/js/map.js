@@ -122,7 +122,7 @@ $(document).ready(function(){
       console.log('error: ',_error);
     }
   })).done(function () {
-    loadScriptMap(); //Розкоментувати коли мапа включена
+    // loadScriptMap(); //Розкоментувати коли мапа включена
     filterValues.states = objects.state_dict;
     filterValues.cities = objects.cities_dict;
     filterValues.eventsType = objects.event_categories;

@@ -14,9 +14,8 @@ $(function() {
   $(window).resize(function() {
     headerHeight();
     titleAlign();
-    mapWidth();
     newPropertiesItemHeight();
-    titleAlign();
+    mapWidth();
   });
   $('.menu-button').click(function(){
     $(this).toggleClass('is-active');
@@ -76,17 +75,21 @@ function titleAlign() {
 
 //map size
 function mapWidth() {
-  var windowWidth = $("body").outerWidth();
-  var mapOffset = $(".seminare-and-map .map").offset().left;
-  var seminarWIdth = $('.seminare-and-map .seminare').outerWidth();
-  var containerPadding = parseFloat($('.seminare-and-map .container').css('paddingLeft'));
-  var containerHeight = parseFloat($('.seminare-and-map .container').outerHeight());
-  $(".seminare-and-map .map .map-wrap").css({
-    "width": windowWidth - mapOffset + "px",
-    // 'left': seminarWIdth + containerPadding + 'px',
-    'height': containerHeight + 'px'
-  });
-  console.log(mapOffset);
+  if(window.outerWidth >= 991){
+    setTimeout(function(){
+      var windowWidth = $("body").outerWidth();
+      var mapOffset = $(".seminare-and-map .map").offset().left;
+      // var seminarWIdth = $('.seminare-and-map .seminare').outerWidth();
+      // var containerPadding = parseFloat($('.seminare-and-map .container').css('paddingLeft'));
+      // var containerHeight = parseFloat($('.seminare-and-map .container').outerHeight());
+      $(".seminare-and-map .map .map-wrap").css({
+        "width": windowWidth - mapOffset + "px",
+        // 'left': seminarWIdth + containerPadding + 'px',
+        // 'height': containerHeight + 'px'
+      });
+      console.log(mapOffset);
+    },111);
+  }
 }
 
 // new-properities new-properties__item__text height
@@ -96,7 +99,9 @@ function newPropertiesItemHeight(){
   var itemsLocationHeight =  $('.new-properties__item__location div');
   var maxHeight1 = 0;
   var maxHeight2 = 0;
-  itemsLocationHeight.map(function(){
+  itemsLocationHeight.removeAttr('style');
+  itemsTextTitle.removeAttr('style');
+  itemsLocationHeight.map(function(){   
     if($(this).outerHeight() >= maxHeight1){
       maxHeight1 = $(this).outerHeight();
     }

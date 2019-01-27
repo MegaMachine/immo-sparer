@@ -2,6 +2,9 @@
   background: url('../img/bg/header-bg.jpg') no-repeat right / cover;
   // padding-top: 80px;
   padding: 80px 0px;
+  @include mqmax($size-md){
+    padding: 40px 0px;
+  }
   .container{
     display: flex;
     min-height:60vh;

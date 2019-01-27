@@ -1,5 +1,8 @@
 .client-reviews{
   padding: 75px 0px 115px;
+  @include mqmax($size-md){
+    padding: 40px 0px 60px;
+  }
   .section-title{
     margin-bottom: 50px;
     h2{
@@ -7,6 +10,9 @@
     }
   }
   &__item{
+    @include mqmax($size-sm){
+      margin-bottom: 60px;
+    }
     &__quotes{
       
       img{
@@ -37,6 +43,9 @@
       }
       p{
         @include text(16px, $color-grey1, $font-poppins-regular, 24px);
+        @include mqmax($size-md){
+          font-size: 14px;
+        }
       }
     }
     &__client{

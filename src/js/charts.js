@@ -6,6 +6,30 @@ Chart.defaults.global.defaultFontColor = '#292929';
 Chart.defaults.global.defaultFontSize = 14;
 Chart.defaults.global.defaultFontFamily = 'Poppins-SemiBold';
 
+$(window).resize(function(){
+    if(window.outerWidth <= 991){
+        Chart.defaults.global.defaultFontSize = 12;
+        options.layout.padding.left = 10;
+        new Chart(ctxOne, {
+            type: 'bar',
+            data: dataOne,
+            plugins: [ChartDataLabels],
+            options: options
+        });
+
+    }else{
+        Chart.defaults.global.defaultFontSize = 14;
+        options.layout.padding.left = 20;
+        new Chart(ctxOne, {
+            type: 'bar',
+            data: dataOne,
+            plugins: [ChartDataLabels],
+            options: options
+        });
+
+    }
+});
+
 var options = {
     display:true,
     layout: {
@@ -70,4 +94,3 @@ var myChartTwo = new Chart(ctxTwo, {
     plugins: [ChartDataLabels],
     options: options
 });
-

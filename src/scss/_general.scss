@@ -65,6 +65,9 @@ button{
     color:$color-white;
     line-height: 24px;
     text-transform: uppercase;
+    @include mqmax($size-lg){
+      font-size: 12px;
+    }
   }
   &.blue {
     background: $color-blue1;

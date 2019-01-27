@@ -4,6 +4,9 @@
     text-align: left;
     h2{
       @include text(20px, $color-dark-blue2, $font-poppins-semibold, 24px);
+      @include mqmax($size-md){
+        font-size: 16px;
+      }
     }
   }
   .section-text{
@@ -11,6 +14,9 @@
     
     p{
       @include text(16px, $color-grey1, $font-poppins-regular, 24px);
+      @include mqmax($size-md){
+        font-size: 14px;
+      }
     }
     &.bold{
       p{
@@ -20,13 +26,29 @@
   }
   &__block{
     display: flex;
+    flex-wrap: wrap;
     &__item{
       width: 50%;
+      @include mqmax($size-md){
+        width: 100%;
+        margin-bottom: 30px;
+      }
     }
   }
   &__buttons{
     display: flex;
     justify-content: space-between;
-  }
-  
+    flex-wrap: wrap;
+    .button{
+      flex-shrink: 0;
+      @include mqmax($size-md){
+        padding: 10px;
+        width: 32%;
+        margin-bottom: 20px;
+      }
+      @include mqmax($size-sm){
+        width: 48%;
+      }
+    }
+  } 
 }

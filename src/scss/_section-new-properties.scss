@@ -1,5 +1,8 @@
 .new-properties{
   padding: 80px 0px;
+  @include mqmax($size-md){
+    padding: 40px 0px;
+  }
   .section-title{
     margin-bottom: 50px;
     h2{
@@ -19,6 +22,7 @@
   }
   &__item{
     width: 100%;
+    margin-bottom: 30px;
     &__img{
       position: relative;
       &__more{
@@ -77,6 +81,9 @@
         -webkit-box-orient: vertical;
         overflow: hidden;
         text-overflow: ellipsis;
+        @include mqmax($size-md){
+          font-size: 14px;
+        }
       }
     }
     &__location{
