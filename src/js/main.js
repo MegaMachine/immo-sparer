@@ -1,6 +1,6 @@
 $(function() {
-
   headerCloneForMobile();
+  showAgents();
   setTimeout(function() {
     headerHeight();
     titleAlign();
@@ -21,6 +21,9 @@ $(function() {
     $(this).toggleClass('is-active');
     $('.header__bottom__nav__mobile').toggleClass('active');
   });
+  $('#show-agents').click(function(){
+    showAgents();
+  })
 });
 
 //object-fit-simulation
@@ -133,4 +136,20 @@ function headerCloneForMobile(){
   // $('.header__top div.social').clone().appendTo('.header__bottom__nav__mobile');
   $('.header__mid__contacts__phones').clone().appendTo('.header__bottom__nav__mobile');
   $('.header__top .log-or-reg').clone().appendTo('.header__bottom__nav__mobile');
+}
+
+//Show Agents button
+var showAgentsStatus = false;
+function showAgents(){ 
+  var agents = $('.agents .row>div');
+  if(showAgentsStatus){
+    agents.fadeIn();
+    showAgentsStatus = !showAgentsStatus;
+  }else{
+    for(var i = 2; i < agents.length; i++){
+      $(agents[i]).fadeOut();
+    }
+    showAgentsStatus = !showAgentsStatus;
+  }
+  console.log(agents);
 }

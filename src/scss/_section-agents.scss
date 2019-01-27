@@ -1,17 +1,18 @@
 .agents{
   background: $color-blue1;
-  padding: 75px 85px 90px;
+  padding: 75px 0px 90px;
   @include mqmax($size-lg){
     padding: 55px 0px 70px;
   }
   .section-title{
     margin-bottom: 35px;
   }
+  .section-button{
+    text-align: center;
+  }
   &__item{  
     display: flex;
-    @include mqmax($size-md){
-      margin-bottom: 30px;
-    }
+    margin-bottom: 30px;
     @include mqmax($size-sm){
       flex-direction: column;
       align-items: center;
@@ -50,6 +51,9 @@
         display: flex;
         align-items: center;
         margin-bottom: 10px;
+        @include mqmax($size-sm){
+          justify-content: center;
+        }
         &:before{
           content:"";
           margin-right: 10px;
@@ -64,6 +68,9 @@
         align-items: center;
         justify-content: flex-start;
         margin-top: 25px;
+        @include mqmax($size-sm){
+          justify-content: center;
+        }
         &__link{
 
           display: block;
