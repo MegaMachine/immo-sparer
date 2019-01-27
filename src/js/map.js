@@ -26,8 +26,8 @@ var selectType;
 
 $(document).ready(function(){
   startPosition = {
-    lat : $('#latitude').val() || 50.9913249,
-    log : $('#longitude').val() || 9.4721966,
+    lat : parseFloat($('#latitude').val()) || 50.9913249,
+    log : parseFloat($('#longitude').val()) || 9.4721966,
     type : $('#template_type').val() || 'terrain'
   };
   $(window).resize(function(){
@@ -169,6 +169,19 @@ function filterSort(state,city,event_type){
   buildSearchList();
   createMarkersGroup(searchResult); //Розкоментувати коли мапа включена
   showMarkers(); //Розкоментувати коли мапа включена
+  console.log(searchResult.length,objects.events_dict.length);
+  if(searchResult.length !== objects.events_dict.length){
+    map.setCenter({
+      lat:parseFloat(searchResult[0].latitude),
+      lng:parseFloat(searchResult[0].longitude)
+    });
+    map.setZoom(14);
+    console.log('+');
+  }else{
+    map.setCenter({lat: startPosition.lat, lng: startPosition.log});
+    map.setZoom(7);
+    console.log('-');
+  }
 }
 
 function buildSearchList(){
@@ -230,7 +243,6 @@ function addMarker(location,contentString) {
 
 function createMarkersGroup(items){
   items.map(function(item){
-    console.log(item);
     var street = item.street ? item.street + ' ,' : '';
     var city = item.city_id[1] ? item.city_id[1] + ' ,' : '';
     var country =  item.country_id[1] ? item.country_id[1] : '';
