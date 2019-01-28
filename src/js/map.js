@@ -4,7 +4,7 @@
 //<input id="template_type" type="hidden" t-att-value="template_type"/> 
 
 window.initMap = initMap;
-var url = 'http://localhost:3000/json/data.json';
+var urlMap = 'http://localhost:3000/json/data.json';
 var map;
 var markers = [];
 var startPosition;
@@ -105,13 +105,13 @@ $(document).ready(function(){
   });
   $.when($.ajax({
     type: "GET",
-    url:  url,
+    url:  urlMap,
     dataType: "json",
     async: false, // Забрати коли будеш на бек-енд стукатись
     success: function success(data) {
       objects = data;
       searchResult = data.events_dict;
-      console.log('good: ',objects);
+      console.log('good: ',data);
     },
     error: function error(_error) {
       console.log('error: ',_error);
@@ -231,12 +231,11 @@ function addMarker(location,contentString) {
     content: contentString
   });
   infowindow.open(map, marker);
-  // map.setCenter(latLng);
-  // map.setZoom(14);
   markers.push(marker);
 }
 
 function createMarkersGroup(items){
+  console.log(items)
   items.map(function(item){
     var street = item.street ? item.street + ' ,' : '';
     var city = item.city_id[1] ? item.city_id[1] + ' ,' : '';
