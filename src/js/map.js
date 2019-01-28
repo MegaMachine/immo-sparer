@@ -31,18 +31,7 @@ $(document).ready(function(){
     type : $('#template_type').val() || 'terrain'
   };
   $(window).resize(function(){
-    selectState.select2({
-      placeholder: "Select a state",
-      allowClear: true
-    });
-    selectCity.select2({
-      placeholder: "Select a city",
-      allowClear: true
-    });
-    selectType.select2({
-      placeholder: "Select a event type",
-      allowClear: true
-    });
+
   });
 
   //Get selects
@@ -51,14 +40,20 @@ $(document).ready(function(){
   selectType = $('.seminare__search__filter__type select');
 
   selectState.select2({
+    width: 'resolve',
+    theme: "classic",
     placeholder: "Select a state",
     allowClear: true
   });
   selectCity.select2({
+    width: 'resolve',
+    theme: "classic",
     placeholder: "Select a city",
     allowClear: true
   });
   selectType.select2({
+    width: 'resolve',
+    theme: "classic",
     placeholder: "Select a event type",
     allowClear: true
   });

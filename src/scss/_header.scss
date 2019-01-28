@@ -246,6 +246,7 @@
       }
     }
     &__search{
+      display: none;
       @include mqmax($size-md){
         padding: 15px 0px;
       }

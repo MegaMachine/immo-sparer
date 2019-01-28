@@ -121,24 +121,6 @@ button{
     }
   }
 }
-// .preView{
-//   position: absolute;
-//   top:0;
-//   left: 0;
-//   right: 0;
-//   bottom: 0;
-//   animation:preViewAnim 3s ease-out;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   background: $color-white;
-//   img{
-//     width: 300px;
-//   }
-// }
-
-// @keyframes preViewAnim{
-//   0%{opacity: 1;}
-//   99%{opacity: 0;}
-//   100%{display: none;}
-// }
+.select2.select2-container{
+  width: 100% !important;
+}
