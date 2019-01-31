@@ -1,0 +1,29 @@
+mixin formmap()
+  section#form-and-map.form-and-map
+    .container
+      .form
+        .section-title
+          h2 Registrierung
+        .subtitle
+          p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        .form__wrap
+          form(action="POST")
+            label
+              span der Name*
+              input(type="text")
+            label
+              span Nachname*
+              input(type="text")
+            label
+              span Email*
+              input(type="email")
+            label
+              span Telefon
+              input(type="text")
+            .form-info * erforderlich   
+            .form__button
+              button.button(type="submit") 
+                span Registrieren          
+      .map
+        .map-wrap
+          div(id="map")

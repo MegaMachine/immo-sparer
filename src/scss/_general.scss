@@ -124,3 +124,8 @@ button{
 .select2.select2-container{
   width: 100% !important;
 }
+.subtitle{
+  p{
+    @include text(14px, $color-white, $font-poppins-regular, 20px);
+  }
+}
