@@ -1,0 +1,25 @@
+.state-list{
+  background: $color-blue1;
+  padding: 60px 0px;
+  .section-title{
+    margin-bottom:  40px;
+    h2{
+
+    }
+  }
+  ul{
+    width: 100%;
+    text-align: center;
+    li{
+      margin-bottom: 15px;
+      a{
+        @include text(16px, $color-white,$font-poppins-medium,22px);
+        padding-bottom: 2.5px;
+        border-bottom: 4px solid transparent;
+        &:hover{
+          border-color: $color-dark-blue;
+        }
+      }
+    }
+  }
+}
