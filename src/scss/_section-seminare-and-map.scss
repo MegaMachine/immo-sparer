@@ -125,30 +125,30 @@
           &>div:nth-of-type(3){
             &>div:nth-of-type(1){
               &>div:nth-of-type(4){
-                &>div{ //info widnow
-                  &>div:first-of-type{
-                    display: none !important;
-                   
-                  }
+                &>div{
                   button{
                     display: none !important; 
                   }
                   .gm-style-iw{
                     top: 95px !important;
                     left: 75px !important;
+                    padding: 0px;
                     overflow: visible;
+                    &-t{
+                      &:after,&:before{
+                        display: none;
+                      }
+                    }
+                    &-c{
+                      background-color: transparent;
+                      box-shadow: none;
+                    }
                     &>div{
                       overflow: visible !important;
                       &>div{
                         overflow: visible !important;
                       }
                     }
-                  }
-                }
-                &>div:nth-of-type(3){
-
-                  &>div:nth-of-type(3){
-                   
                   }
                 }
               }
