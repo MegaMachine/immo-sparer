@@ -1,4 +1,7 @@
 Chart.plugins.unregister(ChartDataLabels);
+Chart.defaults.global.defaultFontColor = '#292929';
+Chart.defaults.global.defaultFontSize = 14;
+Chart.defaults.global.defaultFontFamily = 'Poppins-SemiBold';
 
 var chartsData;
 var urlCharts = 'http://localhost:3000/json/';
@@ -53,9 +56,9 @@ $(document).ready(function () {
    
 });
 
-function getButtonData(url, value){
-   
-return $.ajax({
+function getButtonData(url, value) {
+
+    return $.ajax({
         type: "GET",
         url: url + value + '.json',
         dataType: "json",
@@ -81,23 +84,6 @@ function initsCharts( labels, data1, data2 ){
     var setOptions;
     var chartContainerOne;
     var chartContainerTwo;
-
-    document.querySelector(".charts__block__item.one .charts__block__item__chart").innerHTML = "";
-    document.querySelector(".charts__block__item.two .charts__block__item__chart").innerHTML = "";  
-
-    chartContainerOne = document.createElement('canvas');
-    chartContainerTwo = document.createElement('canvas');
-    
-    chartContainerOne.id = 'myChartOne';
-    chartContainerTwo.id = 'myChartTwo';
-    chartContainerOne.height = "250";
-    chartContainerTwo.height = "250";
-
-    document.querySelector(".charts__block__item.one .charts__block__item__chart").appendChild(chartContainerOne);
-    document.querySelector(".charts__block__item.two .charts__block__item__chart").appendChild(chartContainerTwo);
-
-    ctxOne = document.getElementById("myChartOne").getContext('2d');
-    ctxTwo = document.getElementById("myChartTwo").getContext('2d');
 
     setOptions = {
         display: true,
@@ -132,39 +118,51 @@ function initsCharts( labels, data1, data2 ){
         }
     };
     
-    Chart.defaults.global.defaultFontColor = '#292929';
-    Chart.defaults.global.defaultFontSize = 14;
-    Chart.defaults.global.defaultFontFamily = 'Poppins-SemiBold';
+    if(data1){
+        document.querySelector(".charts__block__item.one .charts__block__item__chart").innerHTML = "";
+        chartContainerOne = document.createElement('canvas');
+        chartContainerOne.id = 'myChartOne';
+        chartContainerOne.height = "250";
+        document.querySelector(".charts__block__item.one .charts__block__item__chart").appendChild(chartContainerOne);
+        ctxOne = document.getElementById("myChartOne").getContext('2d');
+        dataOne = {
+            labels: labels || chartsData.label,
+            datasets: [{
+                data: data1 || chartsData.chart[0].data1,
+                backgroundColor: '#44acd7',
+                borderColor: '#44acd7',
+                borderWidth: 1
+            }]
+        };
+        myChartOne = new Chart(ctxOne, {
+            type: 'bar',
+            data: dataOne,
+            plugins: [ChartDataLabels],
+            options: setOptions
+        });  
+    }
 
-    dataOne = {
-        labels: labels || chartsData.label,
-        datasets: [{
-            data: data1 || chartsData.chart[0].data1,
-            backgroundColor: '#44acd7',
-            borderColor: '#44acd7',
-            borderWidth: 1
-        }]
-    };
-    dataTwo = {
-        labels: labels ||  chartsData.label,
-        datasets: [{
-            data: data2 || chartsData.chart[0].data2,
-            backgroundColor: '#44acd7',
-            borderColor: '#44acd7',
-            borderWidth: 1
-        }]
-    };
-
-    myChartOne = new Chart(ctxOne, {
-        type: 'bar',
-        data: dataOne,
-        plugins: [ChartDataLabels],
-        options: setOptions
-    });   
-    myChartTwo = new Chart(ctxTwo, {
-        type: 'bar',
-        data: dataTwo,
-        plugins: [ChartDataLabels],
-        options: setOptions
-    });
+    if(data2){
+        document.querySelector(".charts__block__item.two .charts__block__item__chart").innerHTML = "";  
+        chartContainerTwo = document.createElement('canvas');
+        chartContainerTwo.id = 'myChartTwo';
+        chartContainerTwo.height = "250";
+        document.querySelector(".charts__block__item.two .charts__block__item__chart").appendChild(chartContainerTwo);
+        ctxTwo = document.getElementById("myChartTwo").getContext('2d');
+        dataTwo = {
+            labels: labels ||  chartsData.label,
+            datasets: [{
+                data: data2 || chartsData.chart[0].data2,
+                backgroundColor: '#44acd7',
+                borderColor: '#44acd7',
+                borderWidth: 1
+            }]
+        };
+        myChartTwo = new Chart(ctxTwo, {
+            type: 'bar',
+            data: dataTwo,
+            plugins: [ChartDataLabels],
+            options: setOptions
+        });
+    }
 }
