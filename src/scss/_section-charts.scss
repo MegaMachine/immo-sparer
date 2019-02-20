@@ -34,6 +34,24 @@
         width: 100%;
         margin-bottom: 30px;
       }
+      &__input{
+        max-width: 300px;
+        margin-left: 70px;
+        border-left:2px solid $color-grey-light;
+        border-bottom:2px solid $color-grey-light;
+        @include mqmax($size-sm){
+          margin:0 auto;
+        }
+        input{
+          width: 100%;
+          @include text(16px, $color-grey1, $font-poppins-regular, 22px);
+          padding: 10px 15px;
+          @include mqmax($size-sm){
+            font-size: 12px;
+            padding: 5px 10px;
+          }
+        }
+      }
     }
   }
   &__buttons{

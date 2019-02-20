@@ -37,7 +37,19 @@ $(document).ready(function () {
        $.when(getButtonData(urlCharts, $(this).val())).done(function(){
         initsCharts(chartsData.label, chartsData.chart[0].data1, chartsData.chart[0].data2);
        });
-   })
+   });
+
+   $('.charts__block__item.one .charts__block__item__input input').change(function(){
+        $.when(getButtonData(urlCharts  + 'chart-input-one', $(this).val())).done(function(){
+            initsCharts(chartsData.label, chartsData.chart[0].data1, chartsData.chart[0].data2);
+        });
+    });
+
+   $('.charts__block__item.two .charts__block__item__input input').change(function(){
+        $.when(getButtonData(urlCharts + 'chart-input-two', $(this).val())).done(function(){
+            initsCharts(chartsData.label, chartsData.chart[0].data1, chartsData.chart[0].data2);
+        });
+    });
    
 });
 
@@ -70,8 +82,8 @@ function initsCharts( labels, data1, data2 ){
     var chartContainerOne;
     var chartContainerTwo;
 
-    document.querySelector(".charts__block__item.one").innerHTML = "";
-    document.querySelector(".charts__block__item.two").innerHTML = "";  
+    document.querySelector(".charts__block__item.one .charts__block__item__chart").innerHTML = "";
+    document.querySelector(".charts__block__item.two .charts__block__item__chart").innerHTML = "";  
 
     chartContainerOne = document.createElement('canvas');
     chartContainerTwo = document.createElement('canvas');
@@ -81,8 +93,8 @@ function initsCharts( labels, data1, data2 ){
     chartContainerOne.height = "250";
     chartContainerTwo.height = "250";
 
-    document.querySelector(".charts__block__item.one").appendChild(chartContainerOne)
-    document.querySelector(".charts__block__item.two").appendChild(chartContainerTwo)
+    document.querySelector(".charts__block__item.one .charts__block__item__chart").appendChild(chartContainerOne);
+    document.querySelector(".charts__block__item.two .charts__block__item__chart").appendChild(chartContainerTwo);
 
     ctxOne = document.getElementById("myChartOne").getContext('2d');
     ctxTwo = document.getElementById("myChartTwo").getContext('2d');
