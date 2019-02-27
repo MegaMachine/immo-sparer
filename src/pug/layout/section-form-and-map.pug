@@ -20,6 +20,14 @@ mixin formmap()
             label
               span Telefon
               input(type="text")
+            .form__checkboxes
+              a(href="#", target="_blank") Read AGB
+              label
+                input(type="checkbox", value="agb")
+                span AGB
+              label
+                input(type="checkbox", value="newsletter")
+                span News letter
             .form-info * erforderlich   
             .form__button
               button.button(type="submit") 

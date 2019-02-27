@@ -23,7 +23,7 @@ $(function() {
   });
   $('#show-agents').click(function(){
     showAgents();
-  })
+  });
 });
 
 //object-fit-simulation
