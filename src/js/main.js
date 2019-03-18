@@ -7,6 +7,7 @@ $(function() {
     mapWidth();
     newPropertiesItemHeight();
     objectFitSimulation();
+    checkHeaderHeight();
   }, 111);
 
   $(window).scroll(function() {});
@@ -16,6 +17,7 @@ $(function() {
     titleAlign();
     newPropertiesItemHeight();
     mapWidth();
+    checkHeaderHeight();
   });
   $('.menu-button').click(function(){
     $(this).toggleClass('is-active');
@@ -152,4 +154,8 @@ function showAgents(){
     showAgentsStatus = !showAgentsStatus;
   }
   console.log(agents);
+}
+
+function checkHeaderHeight(){
+  $('main').css('padding-top', $('header.header').innerHeight() + 'px');
 }

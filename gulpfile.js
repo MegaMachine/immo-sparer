@@ -29,7 +29,7 @@ function stylesLibs() {
     .pipe(cleanCSS({
       level: 2
     }))
-    .pipe(gulp.dest('./build/css'))
+    .pipe(gulp.dest('./build/css'));
 }
 
 // Gulp function for gulp task scriptLibs

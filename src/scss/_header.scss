@@ -1,4 +1,8 @@
 .header{
+  position: fixed;
+  z-index: 5;
+  width: 100%;
+  background: $color-white;
   &__top{
     padding: 10px 0;
     border-bottom: 1px solid $color-grey-light;
