@@ -52,10 +52,41 @@
         .select2-container,.select2-selection{
           outline: none;
         }
+        .select2-selection{
+          height: auto;
+          border-radius: 0;
+          &__rendered{
+            padding: 11px 50px 11px 8px;
+          }
+          &__arrow{
+            height: 50px;
+            width: 50px;
+            background: #dfdfdf;
+            border: none;
+            b{
+              background: url('../img/icon/arrow-down.svg') no-repeat center / cover;
+              display: block;
+              width: 14px;
+              height: 8px;
+              border: none;
+              margin: 0;
+              transform: translate(-50%,-50%);
+            }
+          }
+        }
         .select2-container{
           width: 100%;
           .select2-selection{
 
+          }
+        }
+        .select2-container--open{
+          .select2-selection{
+            &__arrow{
+              b{
+                transform: translate(-50%,-50%) rotate(180deg);
+              }
+            }
           }
         }
       } 
