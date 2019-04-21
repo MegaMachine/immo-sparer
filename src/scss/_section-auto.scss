@@ -32,6 +32,9 @@
     margin: 0 -20px;
     padding: 10px 20px;
     background: $color-grey-light;
+    @include mqmax($size-lg){
+      margin: 0px;
+    }
     ul{
       width: 100%;
       display: flex;
