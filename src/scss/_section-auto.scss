@@ -1,0 +1,49 @@
+.auto{
+  .section-title{
+    text-align: left;
+    margin-bottom: 30px;
+    h2{
+      color:$color-black;
+    }
+  }
+  .section-text{
+    img{
+      float: left;
+      margin-right: 30px;
+      margin-bottom: 30px;
+      max-width: 450px;
+    }
+    p{
+      text-indent: 1.5em;
+      margin-bottom: 20px;
+      font-size: 16px;
+    }
+  }
+  .links-line{
+    margin: 0 -20px;
+    padding: 10px 20px;
+    background: $color-grey-light;
+    ul{
+      width: 100%;
+      display: flex;
+      li{
+        margin-right: 10px;
+        &:before{
+          content:"";
+          display: inline-block;
+          width: 0;
+          height: 0;
+          border-top: 4px solid transparent;
+          border-left: 8px solid $color-red;
+          border-bottom: 4px solid transparent;
+          margin-right: 5px;
+        }
+        a{
+          font-size: 13px;
+          color:$color-black;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+}
