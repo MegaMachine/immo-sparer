@@ -12,11 +12,20 @@
       margin-right: 30px;
       margin-bottom: 30px;
       max-width: 450px;
+      @include mqmax($size-md){
+        width: 100%;
+        float: none;
+        margin:  0 auto 30px;
+        display: block;
+      }
     }
     p{
       text-indent: 1.5em;
       margin-bottom: 20px;
       font-size: 16px;
+      @include mqmax($size-md){
+        font-size: 14px;
+      }
     }
   }
   .links-line{
@@ -26,6 +35,9 @@
     ul{
       width: 100%;
       display: flex;
+      @include mqmax($size-lg){
+        flex-direction: column;
+      }
       li{
         margin-right: 10px;
         &:before{
